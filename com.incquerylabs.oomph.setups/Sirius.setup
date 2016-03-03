@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup:Project
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
+    xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
+    name="sirius"
+    label="Installation of Sirius and Sirius SDK plugins">
+  <setupTask
+      xsi:type="setup.p2:P2Task">
+    <requirement
+        name="${sirius.uid}.Sirius"/>
+    <requirement
+        name="${sirius.uid}.Sirius.SDK"/>
+    <repository
+        url="http://download.eclipse.org/sirius/updates/releases/${sirius.release}/${eclipse.version_name}"/>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      id="sirius.uid"
+      name="sirius.uid"
+      label="Sirius - Unit ID">
+    <description>
+      The unit id of the feature group.
+
+      It can be found on the following page: http://download.eclipse.org/sirius/updates/releases/ .
+      Click &quot;Show Directory Contents&quot; link, choose the requested release, choose the appropriate link depending on the selected Eclipse version and click &quot;Show Directory Contents&quot; link.
+      Open the features folder. You will find the list of features like this: {feature_name}_{sirius_release}.{unit_id}.jar.
+
+      You have to provide the {unit_id} part of one of the listed features to this field!
+    </description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      id="sirius.release"
+      name="sirius.release"
+      label="Sirius - Release name">
+    <description>The name of the Sirius release to install (see this website for releases: http://projects.eclipse.org/projects/modeling.sirius; e.g.: 3.1.4)</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      id="eclipse.version_name"
+      name="eclipse.version_name"
+      label="Sirius - Target platform">
+    <description>Version name of the installed Eclipse in lowercase (e.g.: mars, luna, kepler, etc.)</description>
+  </setupTask>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="eclipse.target.platform"
+      value="None"
+      defaultValue="None"/>
+  <stream name="master"
+      label="Master"/>
+  <logicalProjectContainer
+      xsi:type="setup:ProjectCatalog"
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
+  <description>Installs Sirius and Sirius SDK plugins</description>
+</setup:Project>
