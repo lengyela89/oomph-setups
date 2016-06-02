@@ -5,36 +5,36 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    name="emf.incquery"
-    label="Installation of EMF-IncQuery SDK plugins">
+    name="viatra.query_and_transformation_sdk"
+    label="Installation of VIATRA Query and Transformation SDK">
   <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
-        name="org.eclipse.incquery.sdk.feature.source.feature.group"
+        name="org.eclipse.viatra.query.sdk.feature.source.feature.group"
         filter="">
       <annotation
           source="http://www.eclipse.org/oomph/setup/FeatureSubstitution">
         <detail
             key="versionRange">
-          <value>${incquery.version}</value>
+          <value>${viatra_quey_and_transformation_sdk.version}</value>
         </detail>
       </annotation>
     </requirement>
     <repository
-        url="http://download.eclipse.org/viatra/incquery/updates/${incquery.update_site.type}"/>
+        url="http://download.eclipse.org/viatra/updates/${viatra.update_site.type}"/>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      id="incquery.version"
-      name="incquery.version"
+      id="viatra_quey_and_transformation_sdk.version"
+      name="viatra_quey_and_transformation_sdk.version"
       storageURI="scope://Installation"
       label="IncQuery - Version range">
     <description>Version of the feature group. E.g.: [1.0.0.201506021440, 1.1.0.201511122120)</description>
   </setupTask>
   <setupTask
       xsi:type="setup:VariableTask"
-      id="incquery.update_site.type"
-      name="incquery.update_site.type"
+      id="viatra.update_site.type"
+      name="viatra.update_site.type"
       label="IncQuery - Type of the update site">
     <choice
         value="release"
@@ -42,6 +42,9 @@
     <choice
         value="milestone"
         label="Milestone"/>
+    <choice
+        value="integration"
+        label="Integration"/>
     <description>Type of the update site (release / milestone / etc.)</description>
   </setupTask>
   <setupTask
@@ -54,5 +57,5 @@
   <logicalProjectContainer
       xsi:type="setup:ProjectCatalog"
       href="index:/org.eclipse.setup#//@projectCatalogs[name='org.eclipse']"/>
-  <description>Installs EMF-IncQuery SDK plugins</description>
+  <description>Installation of VIATRA Query and Transformation SDK</description>
 </setup:Project>
